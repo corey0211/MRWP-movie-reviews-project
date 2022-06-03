@@ -54,5 +54,7 @@ Although the outter for-loop loops over the entire dataframe and the inner for-l
 1% data takes minutes to render, 10% of the data takes hours and 100% of the data takes days (on our particular device).
 
 ### file Percentages.ipynb
-in the file "Percentages.ipynb" 
-[somethingsomethingsomething]
+in the file "Percentages.ipynb" the file '10%Network.csv' is imported and the louvain algorithm from the 'community' library is used in oder to identify clusters of movies which were enjoyed together. 
+when you are only interested in seeing our results you should scroll down all the way to the section which says "Results for the Percentages in dataframe" 
+if you go the route of observing different genres than the ones we have chosen you need to change the cells in the section called "Ratio of partitions corresponding to each genre" and replace each genre with one you've chosen. 
+[go more into detail and if it's added talk about the graph drawing]
