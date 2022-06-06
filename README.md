@@ -1,10 +1,13 @@
 # MRWP-movie-reviews-project
-This project takes a dataset of amazon movie reviews and utilizing a network and clustering algorithms. 
-It explores which subnetworks of movies have high clustering coefficients. 
-It also identifies movie genres utilizing a dataset of [xxx] this can be used to find which movie genres are enjoyed by the same people. 
-The purpose of this project is to create a better understanding of how different movie genres are related from a consumers perspective. 
-This knowledge can be used in order to improve movie reccomendations and create a general better understanding of movie audiance tastes. 
-In order to start interacting with this project, make sure all frameworks from 'requirements.txt' are installed.  
+This project builds mainly on the Amazon Movie Reviews dataset to create a network of movie co-reviews ("co-liking") and applies the Louvain clustering algorithm in order to investigate whether movie communitites correspond roughly to genre. 
+The main contribution of this project is thus to the field of recommender systems mostly studied from a machine learning perspective (and based on social sciences knowledge) in order to allow for a better understanding and thus improvement of those systems through a network science lens.
+In order to start interacting with this project, make sure all frameworks from 'requirements.txt' are installed. 
+The three main code files are: 
+- Group Project MRWP.ipynb
+- network creation.ipynb
+- Percentages.ipynb
+and should be run in this exact order.
+For more information on each file see below.
 
 ### file Group Project MRWP.ipynb
 The file 'Group Project MRWP.ipynb' takes the file <<>>> and processes the data and creates the file 'PositiveReviews.csv', 'CompleteDataWithGenres.csv', '1%SampleDataset.csv', '10%Dataset.csv'. 
