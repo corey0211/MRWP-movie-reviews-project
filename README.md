@@ -19,11 +19,11 @@ For more information on each file see below.
 - All _genre_ categories excel format.xlsx: manual overview of all movie categories
 - MRWP Final Project.pptx: presentation slides
 - SampleNetwork.csv:sample network using the 1%SampleDataset.csv (for testing purpose)
-- 10%Network.csv: [https://drive.google.com/file/d/1tlq_Wsc-UE8_s-w8P19AXXaSCV75Mron/view?usp=sharing]: link to download 10%Network.csv to be able to run the Percentages.ipynb file quickly (instead of needing to run both other main files which are quite time consuming)(1)
+- [10%Network.csv]https://drive.google.com/file/d/1tlq_Wsc-UE8_s-w8P19AXXaSCV75Mron/view?usp=sharing: link to download 10%Network.csv to be able to run the Percentages.ipynb file quickly (instead of needing to run both other main files which are quite time consuming)(1)
 
 ## Datasets
 ### Amazon Movie Reviews
-This is the main dataset and should be downloaded to \MRWP-movie-reviews-project-main from [https://snap.stanford.edu/data/web-Movies.html].
+This is the main dataset and should be downloaded to \MRWP-movie-reviews-project-main from the [SNAP website]https://snap.stanford.edu/data/web-Movies.html.
 ### Labels on Amazon Movie Reviews Dataset
 The "labels.csv" file is the additional dataset containing the movies and their associated categories 
 
