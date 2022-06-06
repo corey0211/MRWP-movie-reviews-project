@@ -1,63 +1,74 @@
 # MRWP-movie-reviews-project
 This project builds mainly on the Amazon Movie Reviews dataset to create a network of movie co-reviews ("co-liking") and applies the Louvain clustering algorithm in order to investigate whether movie communitites correspond roughly to genre. 
 The main contribution of this project is thus to the field of recommender systems mostly studied from a machine learning perspective (and based on social sciences knowledge) in order to allow for a better understanding and thus improvement of those systems through a network science lens.
-In order to start interacting with this project, make sure all frameworks from 'requirements.txt' are installed. 
-The three main code files are: 
-- Group Project MRWP.ipynb
-- network creation.ipynb
-- Percentages.ipynb
 
-and should be run in this exact order. For more information on each file see below.
+# File Overview
+In order to start interacting with this project, make sure all frameworks from 'requirements.txt' are installed. 
+
+## Main files
+The three main code files, which should be run in this exact order are: 
+1. Group Project MRWP.ipynb
+2. network creation.ipynb
+3. Percentages.ipynb
+
+For more information on each file see below.
+
+## Additional files
+- 1%SampleDataset.csv: 1% of the preprocessed data (for testing purpose)
+- 10%Dataset.csv: 10% of the preprocessed data used subsequently in network creation.ipynb and Percentages.ipynb
+- All _genre_ categories excel format.xlsx: manual overview of all movie categories
+- MRWP Final Project.pptx: presentation slides
+- SampleNetwork.csv:sample network using the 1%SampleDataset.csv (for testing purpose)
+- 10%Network.csv: [https://drive.google.com/file/d/1tlq_Wsc-UE8_s-w8P19AXXaSCV75Mron/view?usp=sharing]: link to download 10%Network.csv to be able to run the Percentages.ipynb file quickly (instead of needing to run both other main files which are quite time consuming)(1)
+
+## Datasets
+### Amazon Movie Reviews
+This is the main dataset and should be downloaded to \MRWP-movie-reviews-project-main from [https://snap.stanford.edu/data/web-Movies.html].
+### Labels on Amazon Movie Reviews Dataset
+The "labels.csv" file is the additional dataset containing the movies and their associated categories 
+
+## Additional Information
+In general, using the 10%Network.csv and 10%Dataset.csv file found under "Additional files", the first two main files (Group Project MRWP.ipynb
+and network creation.ipynb) do not need to be run for getting the results of this project, computed by Percentages.ipynb.
 
 ### file Group Project MRWP.ipynb
-The file 'Group Project MRWP.ipynb' takes the file <<>>> and processes the data and creates the file 'PositiveReviews.csv', 'CompleteDataWithGenres.csv', '1%SampleDataset.csv', '10%Dataset.csv'. 
-If all of these files are present in your folder and you do not wish to change any parameters or use this code for your own project you can skip to the next section.
-What the code does:
-In the first section named "processing the Main Dataset" the file 'movies.txt' is read and the information is reorganized. 
-When you run cell 4 you can see how the information of one review is organized in the 'movies.txt' file
+To run the 'Group Project MRWP.ipynb' it is required to download the Amazon Movie Reviews dataset as described above. 
 
-In the second section called "getting the Reviews" the usefull information is filtered out (nammely, productId, userId and score) and saved as a list of list.
+The main aim of this file is to preprocess the data for the network building and percentage analysis.
 
-In the section "Exploring the Data" the reviews are counted and the dataset filtered out more
+Throughout the process, four files are saved seperately in order to be able to run the two following main files independently: 'PositiveReviews.csv', 'CompleteDataWithGenres.csv', '1%SampleDataset.csv', '10%Dataset.csv'. 
 
-In the section "Reading the dataset into a Dataframe" a dataframe (df) is created with columns called "Movie", "User" and "Score" a visualization of the dataframe can also be found here. 
-
-In the section "the Final Dataframe" some general information on the dataframe thusfar can be found and the dataframe so far gets saved in the file 'PositiveReviews.csv' which did not get used in the end.
-
-In the section "Prepare the Dataset with the Categories" the file "labels.csv" gets read in, this is a dataframe with columns "Movie" (which is the amazon productId) and "Category". 
-This dataframe get's cleaned by removing all empty category rows, removing all non-movies and changing the format of the categories.
-
-In the section "Towards Merging the Information of both Datasets" first all movies which are in the categories dataset but not in our main dataframe get removed and then the dataframes get merged.
-
-In the section "Saving thhe Data for Easier Accessibility" the dataframe that was just created gets saved to 'CompleteDataWithGenres.csv'. 
-From the same dataframe a fraction of 0.01 gets saved as '1%SampleDataset.csv'
-
-In the section "Reducting the Dataset Size by Genre" the categories are reformatted and A list of the most common categories is created in 8th cell of this subsection. 
-In order to investigate different genres change the 'defined_genres' in the 9th cell, for our project and findings however don't make any changes. 
-At the end of this section the dataframe containing only the chosen genres is saved as '10%Dataset.csv'.
-
-In "Dictionary with Movie as Key and Genre as Value" a dictionary called 'dict_mvs_genre' is created with product id as input and genre as output. 
-Only movies from the 10%Dataset are included in this. 
-
+#### For more detail : the file is divided into 10 steps:
+1. "processing the Main Dataset": the dataset is read and the information is reorganized 
+2. "getting the Reviews": the useless information is filtered out and list of lists (reviews) is created
+3. "Exploring the Data": data exploration and removing "bad reviews"
+4. "Reading the dataset into a Dataframe": a dataframe (df) with all information is created 
+5. "the Final Dataframe": some more general information and saving the file 'PositiveReviews.csv' 
+6. "Prepare the Dataset with the Categories": the file "labels.csv" gets read in and cleaned of empty categories, non-movies
+7. "Towards Merging the Information of both Datasets": remove non-overlapping movies and merge dataframes
+8. "Saving the Data for Easier Accessibility": data saved to 'CompleteDataWithGenres.csv' and save 1% sample '1%SampleDataset.csv'
+9. "Reducting the Dataset Size by Genre": text mining to re-format categories, defining some genres and removing accordingly movies, save as '10%Dataset.csv'
+10. "Dictionary with Movie as Key and Genre as Value": a dictionary called 'with product id and corresponding genre 
 
 ### file Network Creation.ipynb
-The file 'Network Creation' takes the files "SampleDataset.csv" and "10%Dataset.csv" as imput. 
-If either of these files are missing from you zip or you want to adjust the genres for your own project make sure you run 'Group Project MRWP.ipynb' first. 
-Much like the previous code, this code does not need to be run unless you want to use this for your own project or a different implementation. 
-If this is not the case you can move on to the next section.
+This file mainly aims at building the Network of co-reviews.
 
-What the code does: 
-This code is able to create a network of nodes ('Movie') with edges which are weighted based on how many amazon users positiely reviewed bothof the the 2 movies which are connected by said edge. 
-In the 5th cell a test is done with a made up dataframe of 10 movies. 
-It can be easily confirmed the resulting network corresponds to the dataframe input.
-In the 6th cell a network is rendered based on the 1% sample dataset and saved as 'SampleNetwork.csv'. 
-In the 7th cell the same thing is done for the 10%dataset and the network is saved as '10%Network.csv'.
-Important to note if you do desire to run the code again is that the rendering is of quadratic order. 
-Although the outter for-loop loops over the entire dataframe and the inner for-loop only runs over the amount of reviews per user and the size of the inner for-loop decreases in size with each iteration of the outter for-loop the rendering still is slow. 
-1% data takes minutes to render, 10% of the data takes hours and 100% of the data takes days (on our particular device).
+This file requires the previously saved '10%Dataset.csv' and SampleDataset.csv" (for testing) files from Group Project MRWP.ipynb
+
+This code creates a network of nodes ('Movie') with edges which are weighted based on how many amazon users positively reviewed both of the the 2 movies which are connected by said edge. 
+
+Nota Bene: the network creation algorithm is of quadratic order and thus takes quite some time to run, although the outter for-loop loops over the entire dataframe and the inner for-loop only runs over the amount of reviews per user and the size of the inner for-loop decreases in size with each iteration of the outter for-loop the rendering still is slow. 
+
+1% data takes minutes to render, 10% of the data (the 10%Network producted) takes hours and 100% of the data takes days (on our particular device).
+
+#### For more detail: important cells
+- In the 5th cell a test is done with a made up dataframe of 10 movies. It can be easily confirmed the resulting network corresponds to the dataframe input.
+- In the 6th cell a network is rendered based on the 1% sample dataset and saved as 'SampleNetwork.csv'. 
+- In the 7th cell the same thing is done for the 10%dataset and the network is saved as '10%Network.csv'.
 
 ### file Percentages.ipynb
-in the file "Percentages.ipynb" the file '10%Network.csv' is imported and the louvain algorithm from the 'community' library is used in oder to identify clusters of movies which were enjoyed together. 
-when you are only interested in seeing our results you should scroll down all the way to the section which says "Results for the Percentages in dataframe" 
-if you go the route of observing different genres than the ones we have chosen you need to change the cells in the section called "Ratio of partitions corresponding to each genre" and replace each genre with one you've chosen. 
-[go more into detail and if it's added talk about the graph drawing]
+This file mainly aims at performing the clustering of movies and subsequently render the percentage of genre majority movie clusters.
+
+This file requires the 10%Network.csv' and the "10%Dataset.csv". The Louvain algorithm is imported from the python_louvain module, using the 'community' library.
+
+The final results of our project can be found under "Final Project Results - Percentage of Movie Clusters with Genre Majority".
