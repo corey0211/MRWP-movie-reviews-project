@@ -6,8 +6,8 @@ The three main code files are:
 - Group Project MRWP.ipynb
 - network creation.ipynb
 - Percentages.ipynb
-and should be run in this exact order.
-For more information on each file see below.
+
+and should be run in this exact order. For more information on each file see below.
 
 ### file Group Project MRWP.ipynb
 The file 'Group Project MRWP.ipynb' takes the file <<>>> and processes the data and creates the file 'PositiveReviews.csv', 'CompleteDataWithGenres.csv', '1%SampleDataset.csv', '10%Dataset.csv'. 
